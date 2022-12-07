@@ -1,3 +1,8 @@
 #!/bin/bash
-find . -name "*.gif" -type f -printf "%f\n" | rev | cut -d. -f2- | rev | LC_ALL=C sort -f
+find . -type f -iname '*.gif' | while read file
+do
+    name=`echo $file | cut -f 1 -d '.'`
+    size=`ls -l --sort=size $file | awk '{ print $5 }'`
+    echo "$name $size"
+done | sort -k 2 -t ' ' | cut -f 1 -d ' '
 
