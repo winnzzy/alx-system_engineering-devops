@@ -1,0 +1,2 @@
+#!/bin/bash
+tfind -name "*.js" -type f -delete
